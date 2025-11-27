@@ -5,8 +5,24 @@
 			"referenceName": "azure_sql",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"schema": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"table": {
+				"type": "string",
+				"defaultValue": "Users"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@concat(dataset().schema, '.', dataset().table)\n",
+				"type": "Expression"
+			}
+		}
 	}
 }
